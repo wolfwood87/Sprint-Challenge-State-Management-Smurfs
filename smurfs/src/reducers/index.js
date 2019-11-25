@@ -46,7 +46,11 @@ const reducer = (state = initialState, action) => {
         case SMURF_ADD_SUCCESS:
             return {
                 ...state,
-                smurf: [...state.smurf, action.payload],
+                smurf: [...state.smurf, {
+                    name: action.payload.name,
+                    age: action.payload.age,
+                    height: action.payload.height,
+                    id: state.smurf.length}],
                 isLoading: false
             }
         case SMURF_ADD_FAIL:
