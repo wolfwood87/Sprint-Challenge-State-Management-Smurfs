@@ -47,7 +47,7 @@ const Header = props => {
                     onChange={handleChanges}
                 />
                 
-                <div>
+                <div className = 'add'>
                     <button onClick={handleSubmit}>Add Smurf</button>
                 </div>
             </form>

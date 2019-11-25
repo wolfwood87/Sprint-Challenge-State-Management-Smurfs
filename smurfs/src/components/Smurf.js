@@ -8,7 +8,7 @@ const Smurf = props => {
             <p>Age: {props.smurf.age}</p>
             <p>Height: {props.smurf.height}</p>
             <p>ID: {props.smurf.id}</p>
-            <p onClick={() => {props.removeSmurf(props.smurf.id)}}>x</p>
+            <p className="remove" onClick={() => {props.removeSmurf(props.smurf.id)}}>x</p>
         </div>
     )
 }
