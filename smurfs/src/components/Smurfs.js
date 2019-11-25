@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Smurf from './Smurf';
-import { getSmurf } from '../actions';
+import { getSmurf, removeSmurf } from '../actions';
 
 const Smurfs = props => {
-
+    const deleteSmurf = (e) => {
+       e.preventDefault();
+       props.removeSmurf()
+    }
     useEffect(() => {
         props.getSmurf();
     },[])
@@ -12,7 +15,7 @@ const Smurfs = props => {
         <div>
             <h2>Smurf Population</h2>
             {props.smurfs.map((item, index) => (
-                <Smurf key={index} smurf={item}/>
+                <Smurf key={index} smurf={item} index={index} removeSmurf = {props.removeSmurf}/>
             ))}
         </div>
     )
@@ -27,5 +30,5 @@ const mapStateToProps = state => {
 }
 export default connect (
     mapStateToProps,
-    {getSmurf}
+    {getSmurf, removeSmurf}
 )(Smurfs);

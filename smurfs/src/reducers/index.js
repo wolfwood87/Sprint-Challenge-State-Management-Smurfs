@@ -4,7 +4,10 @@ import { SMURF_LOAD_START,
 SMURF_LOAD_FAIL,
 SMURF_ADD_START,
 SMURF_ADD_SUCCESS,
-SMURF_ADD_FAIL }
+SMURF_ADD_FAIL,
+SMURF_REMOVE_START,
+SMURF_REMOVE_SUCCESS,
+SMURF_REMOVE_FAIL }
 from '../actions'
 
 
@@ -47,6 +50,26 @@ const reducer = (state = initialState, action) => {
                 isLoading: false
             }
         case SMURF_ADD_FAIL:
+            return {
+                ...state,
+                error: action.payload,
+                isLoading: false
+            }
+        case SMURF_REMOVE_START:
+            return {
+                ...state,
+                error: '',
+                isLoading: true
+            }
+        case SMURF_REMOVE_SUCCESS:
+            return {
+                ...state,
+                smurf: state.smurf.filter((item) => {
+                    return item.id !== action.payload
+                }),
+                isLoading: false
+            }
+        case SMURF_REMOVE_FAIL:
             return {
                 ...state,
                 error: action.payload,
